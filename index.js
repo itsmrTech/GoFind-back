@@ -24,13 +24,21 @@ var changeStep=()=>{
     setTimeout(changeStep,rand(10000,90000));
 
 }
+var time=rand(100,500);
+console.log(time);
 var goForward=()=>{
     iphone.lat+=lat;
     iphone.long+=long;
+    console.log(lat/0.000009,(time-100)/400)
+    iphone.delta=((time-100)/400)/100;
     console.log("traveling to >",iphone)    
     io.emit("location",iphone);
-    setTimeout(goForward,rand(100,500));    
+    setTimeout(goForward,time); 
+    time=rand(100,500);   
 }
+changeStep();
+
+goForward();
 io.on("connection", (socket) => {
     console.log("SOCKET CONNECTED >", socket.id);
     
