@@ -6,6 +6,7 @@ var io = require("socket.io")(app);
 var iphone = {
     lat: 36.4620281,
     long: 52.8310413,
+    delta:0.0055
 }
 function rand(min, max) {
     return Math.random() * (max - min) + min;
