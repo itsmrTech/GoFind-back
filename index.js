@@ -26,19 +26,31 @@ var changeStep=()=>{
 }
 var time=rand(100,500);
 console.log(time);
+var backward=false;
+
 var goForward=()=>{
     iphone.lat+=lat;
     iphone.long+=long;
     console.log(lat/0.000009,(time-100)/400)
-    iphone.delta=((time-100)/400)/100;
+    // iphone.delta=((time-100)/400)/100;
+    if(backward==false)
+    {
+        if(iphone.delta<0.0059) iphone.delta+=0.00003;
+        else backward=true;
+    }
+    else{
+        if(iphone.delta>0.005) iphone.delta-=0.00003;
+        else backward=false;
+    }
+     
     console.log("traveling to >",iphone)    
     io.emit("location",iphone);
     setTimeout(goForward,time); 
     time=rand(100,500);   
 }
-changeStep();
+// changeStep();
 
-goForward();
+// goForward();
 io.on("connection", (socket) => {
     console.log("SOCKET CONNECTED >", socket.id);
     
