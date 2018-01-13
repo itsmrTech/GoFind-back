@@ -1,15 +1,39 @@
 {
   "name": "gofind-back",
+  "description": "GoFind server",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./build/main.js",
+    "dev": "backpack dev",
+    "build": "backpack build",
+    "postinstall": "backpack build",
+    "production": "backpack build && node ./build/main.js --production"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "shery-logger": "^0.1.6",
-    "socket.io": "^2.0.4"
+    "backpack-core": "^0.4.3",
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.17.2",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.4",
+    "formidable": "^1.1.1",
+    "jsonwebtoken": "^8.1.0",
+    "kavenegar": "^2.0.1",
+    "lodash": "^4.17.4",
+    "moment": "^2.20.1",
+    "mongoose": "^4.11.6",
+    "mongoose-timestamp": "^0.6.0",
+    "nodeify": "^1.0.1",
+    "path": "^0.12.7",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5",
+    "shery-logger": "^0.1.0",
+    "socket.io": "^2.0.4",
+    "validator": "^9.2.0",
+    "ws": "^4.0.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.8.2"
   }
 }
